@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <script src="js/angular.min.js"></script> 
+        <title>User Information</title>
+    </head>
+    <body>
+        <div class="container" ng-app="infoApp">
+            <div class="row main" ng-controller="loginController">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <h1 class="title">Bank Name</h1>
+                        <hr />
+                    </div>
+                </div> 
+                <div class="main-login main-center">
+                    <form class="form-horizontal" onsubmit="return false;" name="infoForm" method="post">
+
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+									
+                                    <input type="text" class="form-control" name="name" ng-model="name" id="name"  placeholder="Enter your Name" required />
+
+                                </div>
+                                <span style="color:red" ng-show="infoForm.name.$error.required">Name required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label  class="cols-sm-2 control-label">Phone</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+				
+                                    <input type="text" class="form-control" name="phone"  ng-model="phone"   placeholder="Enter your phone" required />
+
+                                </div>
+                                <span style="color:red" ng-show="infoForm.phone.$error.required">Phone required</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label  class="cols-sm-2 control-label">Best time to call</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input type="text" class="form-control" name="timetocall"  ng-model="timetocall" placeholder="Best time to call" required />
+
+                                </div>
+                                <span style="color:red" ng-show="infoForm.timetocall.$error.required">This field required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <button type="button" ng-click="goForm()" class="btn btn-primary btn-lg btn-block login-button">Save</button>
+                        </div>
+                        <div class="login-register">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            angular.module("infoApp", [])
+                    .controller("loginController", function ($scope) {
+                        $scope.goForm = function () {
+                            if ($scope.infoForm.$valid) {
+                                alert('Done');
+                            }else{
+                                return false;
+                            }
+                        }
+                    });
+        </script>
+    </body>
+</html>
